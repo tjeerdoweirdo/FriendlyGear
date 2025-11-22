@@ -4,7 +4,7 @@ using UnityEngine.AI;
 namespace FriendlyGear.Core
 {
     /// <summary>
-    /// MonoBehaviour controlling an agent's movement and mission behaviour.
+    /// MonoBehaviour controlling an agent's movement and mission behavior.
     /// Requires a NavMeshAgent component for pathfinding.
     /// </summary>
     [RequireComponent(typeof(NavMeshAgent))]
@@ -107,7 +107,7 @@ namespace FriendlyGear.Core
             {
                 if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
                 {
-                    if (!navMeshAgent.hasPath || navMeshAgent.velocity.sqrMagnitude == 0f)
+                    if (!navMeshAgent.hasPath || navMeshAgent.velocity.sqrMagnitude < 0.1f)
                     {
                         return true;
                     }

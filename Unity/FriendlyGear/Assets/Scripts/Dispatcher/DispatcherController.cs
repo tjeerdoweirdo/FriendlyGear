@@ -82,7 +82,7 @@ namespace FriendlyGear.Core
 
         /// <summary>
         /// Called when a mission's agents have reached the target location.
-        /// Resolves the mission and handles post-resolution behaviour.
+        /// Resolves the mission and handles post-resolution behavior.
         /// </summary>
         public void OnMissionReachedTarget(Mission mission)
         {

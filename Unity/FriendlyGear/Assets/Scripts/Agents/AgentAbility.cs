@@ -3,7 +3,7 @@ using UnityEngine;
 namespace FriendlyGear.Core
 {
     /// <summary>
-    /// Abstract base class for agent abilities that can modify behaviour during missions.
+    /// Abstract base class for agent abilities that can modify behavior during missions.
     /// </summary>
     public abstract class AgentAbility : ScriptableObject
     {
