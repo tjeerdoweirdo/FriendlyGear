@@ -12,7 +12,7 @@ namespace FriendlyGear.Core
 
         /// <summary>
         /// Singleton instance of the AudioManager.
-        /// Note: Not thread-safe, but Unity MonoBehaviours should only be accessed from the main thread.
+        /// Note: Unity MonoBehaviours must only be accessed from the main thread.
         /// </summary>
         public static AudioManager Instance
         {

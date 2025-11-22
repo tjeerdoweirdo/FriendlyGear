@@ -131,6 +131,14 @@ namespace FriendlyGear.Core
             }
         }
 
+        /// <summary>
+        /// Clear the current mission assignment.
+        /// </summary>
+        public void ClearMission()
+        {
+            currentMission = null;
+        }
+
         private void Update()
         {
             // Handle waypoint progression

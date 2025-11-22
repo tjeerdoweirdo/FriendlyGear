@@ -123,7 +123,7 @@ namespace FriendlyGear.Core
                 if (agent != null)
                 {
                     // Clear the mission
-                    agent.currentMission = null;
+                    agent.ClearMission();
 
                     // Reset stats to base
                     agent.ResetStats();
