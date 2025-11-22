@@ -198,7 +198,9 @@ namespace FriendlyGear.Core
         public float GetPathProgress()
         {
             if (waypointPath == null || waypointPath.WaypointCount == 0)
+            {
                 return 0f;
+            }
 
             return (float)currentWaypointIndex / waypointPath.WaypointCount;
         }

@@ -9,6 +9,10 @@ namespace FriendlyGear.Core
     /// </summary>
     public class Mission
     {
+        // Success chance thresholds for determining outcome quality
+        private const float HIGH_SUCCESS_THRESHOLD = 0.9f;
+        private const float MODERATE_SUCCESS_THRESHOLD = 0.5f;
+
         public DistressCallInstance distressCall;
         public List<AgentController> assignedAgents;
         public MissionOutcome outcome;
@@ -123,41 +127,33 @@ namespace FriendlyGear.Core
 
             // Roll for outcome
             float roll = Random.Range(0f, 1f);
-
-            if (roll <= successChance)
-            {
-                // Success thresholds
-                if (successChance >= 0.9f)
-                {
-                    outcome = MissionOutcome.Success;
-                }
-                else if (successChance >= 0.5f)
-                {
-                    outcome = MissionOutcome.PartialSuccess;
-                }
-                else
-                {
-                    // Low success chance but got lucky
-                    outcome = MissionOutcome.PartialSuccess;
-                }
-            }
-            else
-            {
-                // Failed the roll
-                if (successChance >= 0.5f)
-                {
-                    // Had a decent chance but unlucky
-                    outcome = MissionOutcome.PartialSuccess;
-                }
-                else
-                {
-                    outcome = MissionOutcome.Failure;
-                }
-            }
+            
+            outcome = DetermineOutcome(successChance, roll);
 
             Debug.Log($"Mission resolved! Success Chance: {successChance:P0}, Roll: {roll:F2}, Outcome: {outcome}");
 
             return outcome;
+        }
+
+        /// <summary>
+        /// Determine the mission outcome based on success chance and roll.
+        /// </summary>
+        private MissionOutcome DetermineOutcome(float successChance, float roll)
+        {
+            bool passedRoll = roll <= successChance;
+
+            if (passedRoll && successChance >= HIGH_SUCCESS_THRESHOLD)
+            {
+                return MissionOutcome.Success;
+            }
+            else if (passedRoll || successChance >= MODERATE_SUCCESS_THRESHOLD)
+            {
+                return MissionOutcome.PartialSuccess;
+            }
+            else
+            {
+                return MissionOutcome.Failure;
+            }
         }
 
         /// <summary>
