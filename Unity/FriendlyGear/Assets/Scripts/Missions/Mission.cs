@@ -81,14 +81,14 @@ namespace FriendlyGear.Core
 
         /// <summary>
         /// Calculate the ratio between agent stat and required stat.
-        /// Returns 1.0 if agent stat meets or exceeds required, scales down if below.
+        /// Allows ratios above 1.0 so over-specced agents can compensate for difficulty or other stats.
         /// </summary>
         private float CalculateStatRatio(float agentStat, float requiredStat)
         {
             if (requiredStat <= 0f)
                 return 1f; // If no requirement, consider it met
 
-            return Mathf.Min(agentStat / requiredStat, 1f);
+            return agentStat / requiredStat;
         }
 
         /// <summary>

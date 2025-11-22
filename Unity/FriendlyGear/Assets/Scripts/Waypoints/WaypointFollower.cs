@@ -10,6 +10,9 @@ namespace FriendlyGear.Core
     [RequireComponent(typeof(NavMeshAgent))]
     public class WaypointFollower : MonoBehaviour
     {
+        // Velocity threshold for determining if follower has stopped moving
+        private const float VELOCITY_STOP_THRESHOLD = 0.1f;
+
         [Header("Path Configuration")]
         [Tooltip("The waypoint path to follow")]
         public WaypointPath waypointPath;
@@ -133,7 +136,7 @@ namespace FriendlyGear.Core
             {
                 if (navMeshAgent.remainingDistance <= arrivalThreshold)
                 {
-                    if (!navMeshAgent.hasPath || navMeshAgent.velocity.sqrMagnitude < 0.1f)
+                    if (!navMeshAgent.hasPath || navMeshAgent.velocity.sqrMagnitude < VELOCITY_STOP_THRESHOLD)
                     {
                         return true;
                     }

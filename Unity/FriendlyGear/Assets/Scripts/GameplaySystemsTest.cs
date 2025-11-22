@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 using System.Collections.Generic;
 
 namespace FriendlyGear.Core
@@ -83,7 +84,7 @@ namespace FriendlyGear.Core
             for (int i = 0; i < 2; i++)
             {
                 GameObject agentObj = new GameObject($"Test Agent {i}");
-                agentObj.AddComponent<UnityEngine.AI.NavMeshAgent>();
+                agentObj.AddComponent<NavMeshAgent>();
                 AgentController agent = agentObj.AddComponent<AgentController>();
                 
                 if (testAgentDefinition != null)
@@ -165,7 +166,7 @@ namespace FriendlyGear.Core
 
             // Create a follower
             GameObject followerObj = new GameObject("Test Waypoint Follower");
-            followerObj.AddComponent<UnityEngine.AI.NavMeshAgent>();
+            followerObj.AddComponent<NavMeshAgent>();
             WaypointFollower follower = followerObj.AddComponent<WaypointFollower>();
             follower.waypointPath = path;
             follower.autoStart = false;

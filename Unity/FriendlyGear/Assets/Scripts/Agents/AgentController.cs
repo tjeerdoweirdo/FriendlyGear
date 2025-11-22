@@ -10,6 +10,9 @@ namespace FriendlyGear.Core
     [RequireComponent(typeof(NavMeshAgent))]
     public class AgentController : MonoBehaviour
     {
+        // Velocity threshold for determining if agent has stopped moving
+        private const float VELOCITY_STOP_THRESHOLD = 0.1f;
+
         [Header("Agent Data")]
         public AgentDefinition definition;
 
@@ -107,7 +110,7 @@ namespace FriendlyGear.Core
             {
                 if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
                 {
-                    if (!navMeshAgent.hasPath || navMeshAgent.velocity.sqrMagnitude < 0.1f)
+                    if (!navMeshAgent.hasPath || navMeshAgent.velocity.sqrMagnitude < VELOCITY_STOP_THRESHOLD)
                     {
                         return true;
                     }
