@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Linq;
 
 namespace FriendlyGear.Core
 {
@@ -88,7 +89,7 @@ namespace FriendlyGear.Core
                 return;
 
             // Filter out null clips
-            AudioClip[] validClips = System.Array.FindAll(clips, clip => clip != null);
+            AudioClip[] validClips = clips.Where(clip => clip != null).ToArray();
             
             if (validClips.Length == 0)
                 return;

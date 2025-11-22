@@ -112,12 +112,12 @@ namespace FriendlyGear.Core
             MissionOutcome outcome = testMission.Resolve();
             Debug.Log($"Mission outcome: {outcome}");
 
-            // Clean up - use DestroyImmediate in test/editor context
-            DestroyImmediate(callObj);
+            // Clean up - objects will be destroyed at end of frame
+            Destroy(callObj);
             foreach (var agent in testAgents)
             {
                 if (agent != null)
-                    DestroyImmediate(agent.gameObject);
+                    Destroy(agent.gameObject);
             }
 
             Debug.Log("✓ Mission calculation test passed");
@@ -173,9 +173,9 @@ namespace FriendlyGear.Core
 
             Debug.Log($"Created waypoint follower at position {follower.transform.position}");
 
-            // Clean up - use DestroyImmediate in test/editor context
-            DestroyImmediate(pathObj);
-            DestroyImmediate(followerObj);
+            // Clean up - objects will be destroyed at end of frame
+            Destroy(pathObj);
+            Destroy(followerObj);
 
             Debug.Log("✓ Waypoint system test passed");
         }

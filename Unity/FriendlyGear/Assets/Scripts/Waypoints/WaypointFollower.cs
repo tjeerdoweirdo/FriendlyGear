@@ -194,6 +194,7 @@ namespace FriendlyGear.Core
 
         /// <summary>
         /// Get the current progress through the path (0 to 1).
+        /// Returns 1.0 when the follower reaches the final waypoint.
         /// </summary>
         public float GetPathProgress()
         {
@@ -202,7 +203,7 @@ namespace FriendlyGear.Core
                 return 0f;
             }
 
-            return (float)currentWaypointIndex / waypointPath.WaypointCount;
+            return (float)(currentWaypointIndex + 1) / waypointPath.WaypointCount;
         }
     }
 }
