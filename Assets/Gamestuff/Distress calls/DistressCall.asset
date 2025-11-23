@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb5c290f8a2bb3849a5f59ed464e0479, type: 3}
+  m_Name: DistressCall
+  m_EditorClassIdentifier: 
+  callId: Calltest
+  title: Call test
+  description: 
+  fightingWeight: 0.2
+  defenseWeight: 0.2
+  mobilityWeight: 0.2
+  luckWeight: 0.1
+  intelligenceWeight: 0.15
+  charismaWeight: 0.1
+  mentalStabilityWeight: 0.05
+  recommendedAgents: 1
+  baseDifficulty: 5
+  minDurationSeconds: 10
+  maxDurationSeconds: 30
+  distressLines: []
